@@ -1,2 +1,6 @@
 rootProject.name = 'redis-prac'
 include 'pub-sub-chat'
+include 'redis-streams'
+include 'redis-streams:OrderService'
+include 'redis-streams:NotificationService'
+include 'redis-streams:PaymentService'
