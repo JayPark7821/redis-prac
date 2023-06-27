@@ -39,3 +39,9 @@
   * XREADGROUP GROUP groupname consumername COUNT count STREAMS key ID
   * example ) XREADGROUP GROUP consumer1 COUNT 1 STREAMS user-notification >
   * example ) XREADGROUP GROUP consumer2 COUNT 1 STREAMS user-notification >
+
+## Persistent on Disk 
+* RDB ( Snapshot )
+  * Redis Database의 Snapshot을 Disk에 저장하는 방식(backup)
+* AOF ( Append Only File )
+  * Redis Database의 모든 write/update 명령어를 append-only log 형태로 저장하는 방식
