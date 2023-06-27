@@ -1,5 +1,8 @@
 package kr.jay.springdataredis.service;
 
+import static kr.jay.springdataredis.config.CacheConfig.*;
+
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +33,11 @@ public class UserService {
 		final User user = userRepository.findById(id).orElseThrow();
 		objectRedisTemplate.opsForValue().set(key, user);
 		return user;
+	}
+
+	@Cacheable(cacheNames = CACHE1, key = "'user:' + #id")
+	public User getUser1(final Long id) {
+		return userRepository.findById(id).orElseThrow();
 	}
 
 }
