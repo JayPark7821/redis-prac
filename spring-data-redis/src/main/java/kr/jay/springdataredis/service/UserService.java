@@ -19,14 +19,16 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepository;
 	private final RedisTemplate<String, User> userRedisTemplate;
+	private final RedisTemplate<String, Object> objectRedisTemplate;
+
 	public User getUser(final Long id) {
 		final String key = "users:%d".formatted(id);
-		final User cachedUser = userRedisTemplate.opsForValue().get(key);
+		final User cachedUser = (User) objectRedisTemplate.opsForValue().get(key);
 		if(cachedUser != null) {
 			return cachedUser;
 		}
 		final User user = userRepository.findById(id).orElseThrow();
-		userRedisTemplate.opsForValue().set(key, user);
+		objectRedisTemplate.opsForValue().set(key, user);
 		return user;
 	}
 
