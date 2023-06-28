@@ -4,7 +4,7 @@
 * 하나의 엔트리는 entry ID + (key-value 리스트)로 구성
 * 추가된 데이터는 사용자가 삭제하지 않는 한 지워지지 않음
 
-![img.png](images/img.png)
+![img.png](redis-streams/images/img.png)
 
 ### Redis Streams의 활용
 * 센서 모니터링(지속적으로 변하는 데이터인 시간 별 날씨 수집 등)
@@ -31,7 +31,7 @@
 * Consumer Group
   * 한 stream을 여러 consumer가 분산 처리 할 수 있는 방식
   * 하나의 그룹에 속한 consumer는 서로 다른 엔트리들을 조회하게 됨.
-![img1.png](images/img1.png)
+![img1.png](redis-streams/images/img1.png)
 * Consumer Group 생성
   * XGROUP CREATE key groupname id
   * example ) XGROUP CREATE user-notification user-notification-group1 $
